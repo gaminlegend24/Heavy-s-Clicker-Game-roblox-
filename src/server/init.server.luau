@@ -1,10 +1,9 @@
--- local part = game.Workspace.Button.red
--- local clickdetector = part.ClickDetector
+
 local clickSound = game.Workspace.Sounds.click
 
 
 local replicatedStorage = game:GetService("ReplicatedStorage")
-local buttonClickedEvent = replicatedStorage:WaitForChild("ButtonClickedEvent")
+local ClickerbuttonClickedEvent = replicatedStorage:WaitForChild("ClickerButtonClickedEvent")
 
 local AddValue = require(game.ReplicatedStorage.Shared.AddUpgrades)
 
@@ -20,9 +19,14 @@ game.Players.PlayerAdded:Connect(function(player)
 
 end)
 
-buttonClickedEvent.OnServerEvent:Connect(function(player)
+
+
+
+ClickerbuttonClickedEvent.OnServerEvent:Connect(function(player)
 	local leaderstats = player:WaitForChild("leaderstats")
 	local points = leaderstats:WaitForChild("Points")
+		
+
 
 if points.Value == nil then
 		points.Value = 0
@@ -30,9 +34,10 @@ if points.Value == nil then
 
 	local pointsCalc = points.Value
 	pointsCalc = pointsCalc + AddValue(1)
+	
+
 	points.Value = pointsCalc
 
-	clickSound:Play()   
-
+	clickSound:Play()  
 end)
 

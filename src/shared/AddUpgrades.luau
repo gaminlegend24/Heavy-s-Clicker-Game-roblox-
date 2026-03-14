@@ -7,13 +7,13 @@ local MultTwoActive = false
 local MultThreeActive = false
 local MultFourActive = false
 
-local multOneClicker = game.Workspace.MultOne.ClickDetector
 
 local ColorChangeBrick = game.Workspace.MultOne
 
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local AddbuttonClickedEvent = replicatedStorage:WaitForChild("AddButtonClickedEvent")
 
-
-multOneClicker.MouseClick:Connect(function()
+AddbuttonClickedEvent.OnServerEvent:Connect(function(player)
 	if not MultOneActive and not MultTwoActive and not MultThreeActive and not MultFourActive then
 		MultOneActive = true
 		ColorChangeBrick.BrickColor = BrickColor.new(255,0,0)
